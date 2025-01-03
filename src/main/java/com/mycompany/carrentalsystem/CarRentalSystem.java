@@ -16,5 +16,6 @@ public class CarRentalSystem {
         System.out.println("First commit using apache netbeans");
         System.out.println("Second commit using vs code");
         System.out.println("This is feature a");
+        System.out.println("This is feature b");
     }
 }

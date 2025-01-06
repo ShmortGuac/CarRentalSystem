@@ -4,6 +4,7 @@
  */
 
 package com.mycompany.carrentalsystem;
+import java.util.Scanner;
 
 /**
  *
@@ -11,8 +12,16 @@ package com.mycompany.carrentalsystem;
  */
 public class CarRentalSystem {
 
+    Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println("New Feature");
     }
+
+    public static void AddRentalInterface(){
+        System.out.println("========== ADD CAR RENTAL ==========");
+        System.out.println("Car Rental Feature");
+    }
+
 }

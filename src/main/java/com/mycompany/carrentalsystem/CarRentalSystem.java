@@ -33,8 +33,7 @@ public class CarRentalSystem {
         String carColour[] = {"White", "Dark Grey", "Bronze", "Black", "Silver",
                               "Dark Grey", "Red", "Black", "Silver", "White"};
 
-        int carPrice[] = {15, 13, 7, 8, 9,
-                             8, 10, 12, 12, 13};
+        int carPrice[] = {15, 13, 7, 8, 9, 8, 10, 12, 12, 13};
 
         System.out.println("These are the available cars at the time !\n");
 

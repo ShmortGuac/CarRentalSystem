@@ -33,8 +33,8 @@ public class CarRentalSystem {
         String carColour[] = {"White", "Dark Grey", "Bronze", "Black", "Silver",
                               "Dark Grey", "Red", "Black", "Silver", "White"};
 
-        String carPrice[] = {"RM15/hour", "RM13/hour", "RM7/hour", "RM8/hour", "RM9/hour",
-                             "RM8/hour", "RM10/hour", "RM12/hour", "RM12/hour", "RM13/hour"};
+        int carPrice[] = {15, 13, 7, 8, 9,
+                             8, 10, 12, 12, 13};
 
         System.out.println("These are the available cars at the time !\n");
 
@@ -42,7 +42,7 @@ public class CarRentalSystem {
         System.out.println("-------------------------------------------------------");
 
         for(int i = 0 ; i < carName.length ; i++){
-            System.out.printf("%-15s %-7d %-10s %-10s %-13s\n",carName[i] ,carModel[i] ,carPlate[i] ,carColour[i], carPrice[i] );
+            System.out.printf("%-15s %-7d %-10s %-10s RM %2d/hour \n",carName[i] ,carModel[i] ,carPlate[i] ,carColour[i], carPrice[i] );
         }
 
     }

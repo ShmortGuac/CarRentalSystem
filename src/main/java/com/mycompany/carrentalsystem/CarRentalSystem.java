@@ -18,6 +18,7 @@ public class CarRentalSystem {
         System.out.println("Hello World!");
         System.out.println("New Feature");
         System.out.println("Shawn was here");
+        System.out.println("Alternate Branch");
     }
 
     public static void AddRentalInterface(){

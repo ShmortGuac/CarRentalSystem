@@ -20,6 +20,7 @@ public class CarRentalSystem {
 
     public static void AddRentalInterface(){
         System.out.println("========== ADD CAR RENTAL ==========");
+        System.out.println("Car Rental Feature");
     }
 
 }

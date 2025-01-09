@@ -9,6 +9,9 @@ package com.mycompany.carrentalsystem;
  *
  * @author Aiman Hakimi
  */
+
+ import java.util.Scanner;
+
 public class CarRentalSystem {
 
     public static void displayWelcome(){ //ALFYAN SHAWN BIN JASNI (DISPLAY WELCOME MESSAGE)
@@ -18,8 +21,13 @@ public class CarRentalSystem {
         System.out.println("WE ARE HERE TO MAKE RENTING CARS EASIER ");
         System.out.println("===========================================\n");
     }
+  
 
-    public static void carList(){
+    public static void main(String[] args) {
+
+        displayWelcome(); //ALFYAN SHAWN BIN JASNI 2417841 
+
+        Scanner input = new Scanner(System.in);
 
         String carName[] = {"Toyota Hilux", "Toyota Hilux", "Perodua Bezza", "Perodua Bezza", "Perodua Myvi",
                      "Proton Saga", "Proton Saga", "Toyota Camry", "Perodua Alza", "Perodua Alza"};
@@ -35,6 +43,7 @@ public class CarRentalSystem {
 
         int carPrice[] = {15, 13, 7, 8, 9, 8, 10, 12, 12, 13};
 
+
         System.out.println("These are the available cars at the time !\n");
 
         System.out.println("CAR NAME        MODEL   NO PLATE   COLOUR     RATE/HOUR");
@@ -44,27 +53,38 @@ public class CarRentalSystem {
             System.out.printf("%-15s %-7d %-10s %-10s RM %2d/hour \n",carName[i] ,carModel[i] ,carPlate[i] ,carColour[i], carPrice[i] );
         }
 
+        System.out.println("-------------------------------------------------------");
+        System.out.println("\n1. Add Car Rental\n2. Search Cars\n3. Edit Car Booking\n4. Remove Car Booking\n5. Display Booking");
+        int choice;
+        do { 
+            System.out.print("\nChoose an action (1-4) : ");
+            choice = input.nextInt();
+            switch(choice){
+                case 1:
+                    AddRental();
+                    break;
+                case 2:
+                    // Search Method
+                    break;
+                case 3:
+                    // Edit Method
+                    break;
+                case 4:
+                    // Remove Method
+                    break;
+                case 5:
+                    // Display Method
+                    break;
+                default:
+                    System.out.println("Invalid Input");
+            }
+        } while (choice <= 1 || choice >= 5);
     }
-    
 
-    public static void main(String[] args) {
-
-        displayWelcome(); //ALFYAN SHAWN BIN JASNI 2417841 
-
-        carList(); //ALFYAN SHAWN BIN JASNI 2417841
-
-        /* 
-        System.out.println("Hello World!");
-        System.out.println("New Feature");
-        System.out.println("Shawn was here");
-        System.out.println("Main Edit");
-        System.out.println("Alternate Branch");
-        */
-    }
-
-    public static void AddRentalInterface(){
-        System.out.println("========== ADD CAR RENTAL ==========");
+    public static void AddRental(){
+        System.out.println("\n\n========== ADD CAR RENTAL ==========");
         System.out.println("Car Rental Feature");
+        System.out.println();
     }
 
 }

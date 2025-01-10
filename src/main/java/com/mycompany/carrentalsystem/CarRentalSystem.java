@@ -78,6 +78,18 @@ public class CarRentalSystem {
                     break;
                 case 3:
                     // Edit Method
+                    DisplayEditRental();
+                    int editChoice = input.nextInt();
+
+                    switch(editChoice){
+                        case 1 :
+                            //Edit Pickup Date and Time
+                            break;
+                        case 2 : 
+                            //Edit Car Name
+                            break;
+                    }
+
                     break;
                 case 4:
                     // Remove Method
@@ -157,5 +169,32 @@ public class CarRentalSystem {
         System.out.println("------------------------------------------------------------");
         System.out.printf("%-15s %-7s %-10s %-10s RM %4.2f \n",name, model, plate, colour, price);
     }
+    // ---------------------------------------------- NABIL ALIF BIN AZMI 2415845  ------------------------------------------------
+    public static void DisplayEditRental(){
+        System.out.println("\n\n==================== EDIT CAR RENTAL ====================");
+        System.out.println("Choose one of these options");
+        System.out.println("1. Edit Pickup Date and Time");
+        System.out.println("2. Edit Car Name");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

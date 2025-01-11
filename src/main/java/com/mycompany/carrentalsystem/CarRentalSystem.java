@@ -84,6 +84,7 @@ public class CarRentalSystem {
                         break;
                     }
                     else{
+                        displayCurrentBooking(bookingDetails, bookingPrice);
                         displayEditRental();
                         int editOptions = input.nextInt();
                         
@@ -153,6 +154,13 @@ public class CarRentalSystem {
         return index;
     }
 
+    public static void BookingConfirmation(String name, String model, String plate, String colour, float price){
+        System.out.println("\n\n==================== BOOKING CONFIRMATION ====================");
+        System.out.println("\nCAR NAME        MODEL   NO PLATE   COLOUR     TOTAL PRICE");
+        System.out.println("------------------------------------------------------------");
+        System.out.printf("%-15s %-7s %-10s %-10s RM %4.2f \n",name, model, plate, colour, price);
+    }
+
     public static void AddBooking(String name, String model, String plate, String colour, float price, String[][] booking, float[] bookingPrice){
         boolean inserted = false;
         for(int i = 0; i < booking.length; i++){
@@ -160,6 +168,7 @@ public class CarRentalSystem {
                 booking[i][0] = name;
                 booking[i][1] = model;
                 booking[i][2] = plate;
+                booking[i][3] = colour;
                 bookingPrice[i] = price;
                 inserted = true;
                 break;
@@ -172,14 +181,20 @@ public class CarRentalSystem {
         }
         
     }
-
-    public static void BookingConfirmation(String name, String model, String plate, String colour, float price){
-        System.out.println("\n\n==================== BOOKING CONFIRMATION ====================");
-        System.out.println("\nCAR NAME        MODEL   NO PLATE   COLOUR     TOTAL PRICE");
-        System.out.println("------------------------------------------------------------");
-        System.out.printf("%-15s %-7s %-10s %-10s RM %4.2f \n",name, model, plate, colour, price);
-    }
     // ---------------------------------------------- NABIL ALIF BIN AZMI 2415845  ------------------------------------------------
+    public static void displayCurrentBooking(String[][] booking, float[] bookingPrice){
+        System.out.println("\n\n==================== BOOKING DETAILS =====================");
+        System.out.println("\n   CAR NAME        MODEL   NO PLATE   COLOUR     TOTAL PRICE");
+        System.out.println("--------------------------------------------------------------");
+
+        for(int i = 0; i<3; i++){
+            if(booking[i][0]==null){
+                break;
+            }
+            System.out.printf("%d) %-15s %-7s %-10s %-10s RM %4.2f \n", i+1, booking[i][0], booking[i][1], booking[i][2], booking[i][3], bookingPrice[i]);
+            
+        }
+    }
     public static void displayEditRental(){
         System.out.println("\n\n==================== EDIT CAR RENTAL ====================\n");
         System.out.println("Choose one of these options");

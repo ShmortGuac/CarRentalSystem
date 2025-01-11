@@ -37,7 +37,7 @@ public class CarRentalSystem {
         int carPrice[] = {15, 13, 7, 8, 9, 8, 10, 12, 12, 13};
 
         String[][] bookingDetails = new String[3][4];
-        float[] bookingPrice = new float[3];
+        float[] bookingPrice = new float[3];        
 
         System.out.println("These are the available cars at the time !\n");
 
@@ -78,18 +78,28 @@ public class CarRentalSystem {
                     break;
                 case 3:
                     // Edit Method
-                    DisplayEditRental();
-                    int editChoice = input.nextInt();
-
-                    switch(editChoice){
-                        case 1 :
-                            //Edit Pickup Date and Time
-                            break;
-                        case 2 : 
-                            //Edit Car Name
-                            break;
+                    //Check For Booking Details
+                    if(bookingDetails[0][0]==null){
+                        System.out.println("No booking made");
+                        break;
                     }
+                    else{
+                        displayEditRental();
+                        int editOptions = input.nextInt();
+                        
+                        switch(editOptions){
+                            case 1 ://Edit Pickup Date and Time
+                                
 
+                                break;
+
+                            case 2 ://Edit Car Name
+
+                                break;
+                            default : 
+                                System.out.println("Returning to the main menu...");
+                        }
+                    }
                     break;
                 case 4:
                     // Remove Method
@@ -170,12 +180,17 @@ public class CarRentalSystem {
         System.out.printf("%-15s %-7s %-10s %-10s RM %4.2f \n",name, model, plate, colour, price);
     }
     // ---------------------------------------------- NABIL ALIF BIN AZMI 2415845  ------------------------------------------------
-    public static void DisplayEditRental(){
-        System.out.println("\n\n==================== EDIT CAR RENTAL ====================");
+    public static void displayEditRental(){
+        System.out.println("\n\n==================== EDIT CAR RENTAL ====================\n");
         System.out.println("Choose one of these options");
         System.out.println("1. Edit Pickup Date and Time");
         System.out.println("2. Edit Car Name");
+        System.out.println("(Press any key to return to mainpage)");
     }
+    public static float calculatePrice(int $carPrice, int $hours){
+         return $carPrice*$hours;
+    }
+    
     //----------------------- AHMAD ZHARFAN SHAH BIN ROHISHAM 2414683 ------------------------------------------------------------------------
 
 

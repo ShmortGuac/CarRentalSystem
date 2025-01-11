@@ -35,10 +35,12 @@ public class CarRentalSystem {
                               "Dark Grey", "Red", "Black", "Silver", "White"};
 
         int carPrice[] = {15, 13, 7, 8, 9, 8, 10, 12, 12, 13};
+        int[] priceData = new int[3];
+        int addCount = 0;
 
         String[][] bookingDetails = new String[3][4];
-        float[] bookingPrice = new float[3];        
-
+        float[] bookingPrice = new float[3];    
+        
         System.out.println("These are the available cars at the time !\n");
 
         System.out.println("CAR NAME        MODEL   NO PLATE   COLOUR     RATE/HOUR");
@@ -68,6 +70,8 @@ public class CarRentalSystem {
                         String confirm = input.next();
                         if(confirm.equalsIgnoreCase("y")){
                             AddBooking(carName[id], carModel[id], carPlate[id], carColour[id], totalPrice, bookingDetails, bookingPrice);
+                            priceData[addCount] = carPrice[id];
+                            addCount++;
                         }
                     }else{
                         System.out.println("Invalid plate number...\n ");
@@ -80,7 +84,7 @@ public class CarRentalSystem {
                     // Edit Method
                     //Check For Booking Details
                     if(bookingDetails[0][0]==null){
-                        System.out.println("No booking made");
+                        System.out.println("\nNo booking made.");
                         break;
                     }
                     else{
@@ -89,8 +93,31 @@ public class CarRentalSystem {
                         int editOptions = input.nextInt();
                         
                         switch(editOptions){
-                            case 1 ://Edit Pickup Date and Time
+                            case 1 : //NABIL ALIF BIN AZMI (EDIT TIME)
+                                int editIDX = -1;
                                 
+                                do{
+                                    displayCurrentBooking(bookingDetails, bookingPrice);
+                                    System.out.print("\n======== EDIT DURATION OF RENTAL ========\n\n");
+
+                                    System.out.printf("Select which booking you want to edit (1 to %d) : ",addCount);
+                                    editIDX = input.nextInt();
+
+                                    if(editIDX < 1 || editIDX > (addCount)){
+                                        System.out.println("\nInvalid Input! Please try again.");
+                                    }
+
+                                }while(editIDX < 1 || editIDX > (addCount));
+                                editIDX--;
+                                
+                                System.out.print("Enter the new duration of your rental : ");
+                                hours = input.nextInt();
+
+                                bookingPrice[editIDX] = calculatePrice(priceData[editIDX], hours);
+                                System.out.println("\nCalculated Successfully!\n");
+
+                                System.out.print("New Booking Details : ");
+                                displayCurrentBooking(bookingDetails, bookingPrice);
 
                                 break;
 
@@ -107,6 +134,7 @@ public class CarRentalSystem {
                     break;
                 case 5:
                     // Display Method
+                    displayCurrentBooking(bookingDetails, bookingPrice);
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -183,27 +211,31 @@ public class CarRentalSystem {
     }
     // ---------------------------------------------- NABIL ALIF BIN AZMI 2415845  ------------------------------------------------
     public static void displayCurrentBooking(String[][] booking, float[] bookingPrice){
-        System.out.println("\n\n==================== BOOKING DETAILS =====================");
-        System.out.println("\n   CAR NAME        MODEL   NO PLATE   COLOUR     TOTAL PRICE");
-        System.out.println("--------------------------------------------------------------");
-
-        for(int i = 0; i<3; i++){
-            if(booking[i][0]==null){
-                break;
+        if(booking[0][0]==null){
+            System.out.println("\nThere is no booking yet...");
+        }else{
+            System.out.println("\n==================== BOOKING DETAILS =====================");
+            System.out.println("\n   CAR NAME        MODEL   NO PLATE   COLOUR     TOTAL PRICE");
+            System.out.println("--------------------------------------------------------------");
+            for(int i = 0; i<3; i++){
+                if(booking[i][0]==null){
+                    break;
+                }
+                System.out.printf("%d) %-15s %-7s %-10s %-10s RM %4.2f \n", i+1, booking[i][0], booking[i][1], booking[i][2], booking[i][3], bookingPrice[i]);
+                
             }
-            System.out.printf("%d) %-15s %-7s %-10s %-10s RM %4.2f \n", i+1, booking[i][0], booking[i][1], booking[i][2], booking[i][3], bookingPrice[i]);
-            
         }
     }
     public static void displayEditRental(){
-        System.out.println("\n\n==================== EDIT CAR RENTAL ====================\n");
-        System.out.println("Choose one of these options");
-        System.out.println("1. Edit Pickup Date and Time");
+        System.out.println("\n==================== EDIT CAR RENTAL ====================\n");
+        System.out.println("1. Edit Time");
         System.out.println("2. Edit Car Name");
         System.out.println("(Press any key to return to mainpage)");
+        System.out.print("Choose one of these options : ");
     }
     public static float calculatePrice(int $carPrice, int $hours){
-         return $carPrice*$hours;
+        System.out.println("\nCalculating the price...");
+        return $carPrice*$hours;
     }
     
     //----------------------- AHMAD ZHARFAN SHAH BIN ROHISHAM 2414683 ------------------------------------------------------------------------

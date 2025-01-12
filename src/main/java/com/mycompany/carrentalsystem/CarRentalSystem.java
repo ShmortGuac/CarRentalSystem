@@ -23,7 +23,7 @@ public class CarRentalSystem {
         Scanner input = new Scanner(System.in);
 
         String carName[] = {"Toyota Hilux", "Toyota Hilux", "Perodua Bezza", "Perodua Bezza", "Perodua Myvi",
-                     "Proton Saga", "Proton Saga", "Toyota Camry", "Perodua Alza", "Perodua Alza"};
+                            "Proton Saga", "Proton Saga", "Toyota Camry", "Perodua Alza", "Perodua Alza"};
 
         String carModel[] = {"2017", "2014", "2021", "2022", "2024",
                           "2016", "2023", "2023", "2018", "2020"};
@@ -130,8 +130,50 @@ public class CarRentalSystem {
                     }
                     break;
                 case 4:
-                    // Remove Method
+// ---------------------------------------------- AIMAN HAFIZ BIN AZHAR 2414751 ------------------------------------------------
+                if (bookingDetails[0][0] == null) {
+                    System.out.println("\nNo bookings found to remove.");
                     break;
+                } else {
+                    displayCurrentBooking(bookingDetails, bookingPrice);
+                    System.out.println("\n==================== REMOVE CAR BOOKING ====================");
+                    System.out.print("Select the booking number to remove (1 to " + addCount + "): ");
+                    int removeIDX = input.nextInt();
+
+                    if (removeIDX < 1 || removeIDX > addCount) {
+                        System.out.println("\nInvalid input! Returning to main menu...");
+                    } else {
+                        removeIDX--;
+                        System.out.print("Are you sure you want to remove this booking? (y/n): ");
+                        String confirmRemove = input.next();
+
+                        if (confirmRemove.equalsIgnoreCase("y")) {
+                            for (int j = 0; j < bookingDetails[removeIDX].length; j++) {
+                                bookingDetails[removeIDX][j] = null;
+                            }
+                            bookingPrice[removeIDX] = 0;
+
+                            
+                            for (int i = removeIDX; i < bookingDetails.length - 1; i++) {
+                                bookingDetails[i] = bookingDetails[i + 1];
+                                bookingPrice[i] = bookingPrice[i + 1];
+                            }
+
+                            
+                            for (int j = 0; j < bookingDetails[bookingDetails.length - 1].length; j++) {
+                                bookingDetails[bookingDetails.length - 1][j] = null;
+                            }
+                            bookingPrice[bookingDetails.length - 1] = 0;
+
+                            addCount--;
+                            System.out.println("Booking removed successfully!");
+                        } else {
+                            System.out.println("Operation canceled. Returning to the main menu...");
+                        }
+                    }
+                }
+                            
+            break;
                 case 5:
                     // Display Method
                     displayCurrentBooking(bookingDetails, bookingPrice);

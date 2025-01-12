@@ -121,8 +121,42 @@ public class CarRentalSystem {
 
                                 break;
 
-                            case 2 ://Edit Car Name
-
+                            case 2 :
+                                int carChangeNum = 1;
+                                int newid = 0;
+                                displayCurrentBooking(bookingDetails, bookingPrice);
+                                System.out.print("\n=======Change Car Rental======\n\n  ");
+                                int idCount=CarCount(priceData);
+                                if(idCount==1){
+                                    System.out.println("Only one car available, skipping selection.");
+                                }else{
+                                System.out.printf("Choose the car you want to change(1-%d): ", idCount); 
+                                carChangeNum = input.nextInt();
+                                while(carChangeNum>idCount){
+                                    System.out.println("Invalid number, please re-enter: ");
+                                    carChangeNum = input.nextInt();
+                                }
+                                }
+                                String oldNumPlate = bookingDetails[carChangeNum-1][2];
+                                int oldId = searchArray(oldNumPlate, carPlate);
+                                int oldHours = (int) (bookingPrice[carChangeNum-1]/carPrice[oldId]);
+                                
+                                do{
+                                System.out.print("Enter the new Car Number Plate to swap: ");
+                                String SwapNumPlate = input.next();
+                                newid =  searchArray(SwapNumPlate, carPlate);
+                                if(newid<0){
+                                    System.out.println("Invalid Number Plate! Please re-enter: ");
+                                }
+                                }while(newid<0);
+                                
+                                bookingDetails[carChangeNum-1][0] = carName[newid];
+                                bookingDetails[carChangeNum-1][1] = carModel[newid];
+                                bookingDetails[carChangeNum-1][2] = carPlate[newid];
+                                bookingDetails[carChangeNum-1][3] = carColour[newid];
+                                bookingPrice[carChangeNum-1] = carPrice[newid]*oldHours;
+                                
+                                displayCurrentBooking(bookingDetails, bookingPrice);
                                 break;
                             default : 
                                 System.out.println("Returning to the main menu...");
@@ -282,23 +316,14 @@ public class CarRentalSystem {
     
     //----------------------- AHMAD ZHARFAN SHAH BIN ROHISHAM 2414683 ------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static int CarCount(int[] PriceArray){
+        int count=0;
+        for(int i=0 ; i<PriceArray.length; i++){
+            if(PriceArray[i]>5)
+                count++;
+        }
+        return count;
+    }
 
 
 }

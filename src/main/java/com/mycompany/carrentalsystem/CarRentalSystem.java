@@ -103,11 +103,11 @@ public class CarRentalSystem {
                                     System.out.printf("Select which booking you want to edit (1 to %d) : ",addCount);
                                     editIDX = input.nextInt();
 
-                                    if(editIDX < 1 || editIDX > (addCount)){
+                                    if(editIDX < 1 || editIDX > addCount){
                                         System.out.println("\nInvalid Input! Please try again.");
                                     }
 
-                                }while(editIDX < 1 || editIDX > (addCount));
+                                }while(editIDX < 1 || editIDX > addCount);
                                 editIDX--;
                                 
                                 System.out.print("Enter the new duration of your rental : ");
@@ -270,7 +270,7 @@ public class CarRentalSystem {
     }
     public static void displayEditRental(){
         System.out.println("\n==================== EDIT CAR RENTAL ====================\n");
-        System.out.println("1. Edit Time");
+        System.out.println("1. Edit Duration of Rental");
         System.out.println("2. Edit Car Name");
         System.out.println("(Press any key to return to mainpage)");
         System.out.print("Choose one of these options : ");

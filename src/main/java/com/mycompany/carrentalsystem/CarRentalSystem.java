@@ -38,7 +38,8 @@ public class CarRentalSystem {
         int[] priceData = new int[3];
         int addCount = 0;
 
-        String[][] bookingDetails = new String[3][4];
+        // Define arrays for users own booking inventory
+        String[][] bookingDetails = new String[3][4]; 
         float[] bookingPrice = new float[3];    
         
         System.out.println("These are the available cars at the time !\n");

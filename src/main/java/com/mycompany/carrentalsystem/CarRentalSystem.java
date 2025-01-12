@@ -96,7 +96,7 @@ public class CarRentalSystem {
 
                     break;
                 case 2:
-                    // Search Method
+                    searchCar(carName, carModel, carPlate, carColour);
                     break;
                 case 3:
                     // Edit Method
@@ -423,6 +423,32 @@ public class CarRentalSystem {
         // Return the total count of valid cars
         return count;
     }
+
+    //-------------------------------- ATILLA AKHUN 2312569 -------------------------------------------------------
+
+    public static void searchCar(String[] carName, String[] carModel, String[] carPlate, String[] carColour) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("\nEnter the name of the car you want to search for: ");
+        String searchQuery = input.nextLine();
+
+        System.out.println("\n==================== SEARCH RESULTS ====================\n");
+        boolean carFound = false;
+
+        for (int i = 0; i < carName.length; i++) {
+            if (carName[i].equalsIgnoreCase(searchQuery)) {
+                carFound = true;
+                System.out.printf("Car Name: %-15s Model: %-7s Plate: %-10s Colour: %-10s\n",
+                        carName[i], carModel[i], carPlate[i], carColour[i]);
+            }
+        }
+
+        if (!carFound) {
+            System.out.println("No cars found matching the name \"" + searchQuery + "\".");
+        }
+
+        System.out.println("========================================================\n");
+    }
+
 
 
 }

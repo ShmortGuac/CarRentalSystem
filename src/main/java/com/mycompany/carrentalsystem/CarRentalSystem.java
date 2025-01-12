@@ -426,17 +426,25 @@ public class CarRentalSystem {
 
     //-------------------------------- ATILLA AKHUN 2312569 -------------------------------------------------------
 
+    // Search a car by its name and display matching results
     public static void searchCar(String[] carName, String[] carModel, String[] carPlate, String[] carColour) {
         Scanner input = new Scanner(System.in);
+
+        // Prompt user to search
         System.out.print("\nEnter the name of the car you want to search for: ");
         String searchQuery = input.nextLine();
 
+        // Search results header
         System.out.println("\n==================== SEARCH RESULTS ====================\n");
-        boolean carFound = false;
 
+        boolean carFound = false;
+        // Loop through all cars and check if the car name matches the search query
         for (int i = 0; i < carName.length; i++) {
-            if (carName[i].equalsIgnoreCase(searchQuery)) {
+            if (carName[i].equalsIgnoreCase(searchQuery)) { 
+
                 carFound = true;
+                
+                // Display the car details for the matching entry
                 System.out.printf("Car Name: %-15s Model: %-7s Plate: %-10s Colour: %-10s\n",
                         carName[i], carModel[i], carPlate[i], carColour[i]);
             }
